@@ -187,7 +187,7 @@ def categories(request, slug):
 @login_required(login_url='login_form')
 def cart(request):
     categories = Category.objects.all()
-    
+
     context = {'categories':categories,}
     return render(request, 'store/cart.html', context)
 
