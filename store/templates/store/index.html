@@ -1,0 +1,41 @@
+{% extends 'store/base.html '%}
+{% load static %}
+{% load formatted_price %}
+{% block content %}
+    <!-- Carousel -->
+    {% include 'store/carousel.html'%}
+    <!-- Fim do Carousel -->
+    <!-- Card Produtos -->
+    <link rel="stylesheet" href="{% static 'css/index.css'%}">
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h1 class="product-category-title">últimos Produtos</h1>
+            </div>
+        </div>
+        <div class="row mt-5">
+            {% for product in products %}   
+            <div class="col-lg-4 mt-5 animate__animated animate__zoomIn">
+                <div class="card">
+                    {% if product.image %}
+                    <a href="{% url 'details' product.slug %}">
+                        <img src="{{product.image.url}}" alt="" class="card-img-top img-fluid">
+                    </a>    
+                    {% endif %}
+                        <div class="card-body">
+                            <a class="product-link" href="{% url 'details' product.slug %}">
+                                <div class="card-heading">{{product.name|slice:":15"}}...</div>
+                            </a>
+                            <p class="card-text">{{product.description|slice:":100"}}...</p>
+                            <p class="card-price">{{product.price|formatting_price}}</p>
+                                <a href="{% url 'details' product.slug %}" class="btn btn-lg btn-block btn-details">
+                                    Ver Produto   
+                                </a>
+                        </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <!-- Fim do Card Produtos-->
+{% endblock %}

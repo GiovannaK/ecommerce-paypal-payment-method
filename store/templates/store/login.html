@@ -1,0 +1,35 @@
+{% extends 'store/base.html'%}
+{% load static %}
+
+{% block title %}Login |{% endblock %}
+
+{% block content %}  
+ <!-- login form -->
+     <link rel="stylesheet" href="{% static 'css/login.css'%}">
+     <div class="container container-form">
+         <div class="card">
+             <div class="card-body">
+                 <h1 class="form-title text-center">Login</h1>
+                 <form method="POST" action="">
+                     {% csrf_token %}
+                     <div class="form-group login-form mt-5 mb-5">
+                       <label for="exampleInputEmail1 label-email">Usuário</label>
+                       <input type="user" name="username" class="form-control form-email" 
+                       id="exampleInputEmail1" placeholder="Digite seu usuário...">
+                     </div>
+                     <div class="form-group login-form">
+                       <label for="exampleInputPassword1 label-password mt-3">Senha</label>
+                       <input type="password" name="password" class="form-control form-password" 
+                       id="exampleInputPassword1" placeholder="Digite sua senha...">
+                     </div>
+                     <a href="{% url 'reset_password' %}" class="forgot-password">Esqueceu a senha?</a>
+                     <div class="text-center">
+                         <button type="submit" class="btn btn-lg btn-block btn-login">Login</button>
+                     </div>
+                 </form>
+             </div>
+         </div>
+     </div>
+ 
+{% endblock%}        
+     

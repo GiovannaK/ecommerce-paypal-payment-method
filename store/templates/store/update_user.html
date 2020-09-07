@@ -1,0 +1,48 @@
+{% extends 'store/base.html'%}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+{% block title %}Atualizar informações pessoais{% endblock %}
+    
+<link rel="stylesheet" href="{% static 'css/register.css'%}">
+<!-- form de registro -->   
+<div class="container-fluid register-container">
+    <div class="card card-container">
+        <div class="card-body register-card">
+            <h1 class="register-title mb-5">Atualizar usuário, e-mail ou nome</h1>
+            <hr>
+            <form method="POST" action="" class="register-form"> 
+                {% csrf_token %}
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="Name">Primeiro nome</label>
+                        {% render_field updateuserform.first_name class="form-control" type="firstName"%}
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="lastName">último nome</label>
+                        {% render_field updateuserform.last_name class="form-control" type="lastName"%}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    {% render_field updateuserform.email class="form-control" type="email"%}
+                    <small class="form-text error_message">{{updateuserform.errors.email}}</small>
+                </div>
+                <div class="form-group">
+                    <label for="username">Usuário</label>
+                    {% render_field updateuserform.username class="form-control" type="username"%}
+                    <small class="form-text error_message">{{updateuserform.errors.username}}</small>
+                </div>
+                <div class="text-center mt-4"> 
+                    <button type="submit" class="btn btn-lg btn-block btn-register">Atualizar</button>  
+                </div>
+            </form> 
+        </div>
+    </div>
+</div>
+
+<!-- Fim do form de registro -->
+{% endblock %}        
+       

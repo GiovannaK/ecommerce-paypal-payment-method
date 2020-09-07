@@ -1,0 +1,71 @@
+{% extends 'store/base.html'%}
+{% load static %}
+{% load formatted_price %}
+
+{% block title %}{{category}}{% endblock %}
+
+{% block content %}
+<!-- Card Produtos -->
+<link rel="stylesheet" href="{% static 'css/categories.css'%}">  
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h1 class="product-category-title">{{category}}</h1>
+        </div>
+    </div>
+    <div class="row mt-5">
+        {% for product in page_obj%}   
+        <div class="col-lg-4 mt-3 animate__animated animate__zoomIn">
+            <div class="card">
+                {% if product.image %}
+                <a href="{% url 'details' product.slug %}">
+                    <img src="{{product.image.url}}" alt="" class="card-img-top img-fluid">
+                </a>
+                {% endif %}
+                    <div class="card-body">
+                        <a href="{% url 'details' product.slug %}">
+                            <div class="card-heading">{{product.name |slice:":15"}}</div>
+                        </a>
+                        <p class="card-text">{{product.description|slice:":100"}}</p>
+                        <p class="card-heading">{{product.price|formatting_price}}</p>
+                        <a href="{% url 'details' product.slug %}" 
+                        class="btn btn-lg btn-block btn-details">Ver detalhes
+                        </a>
+                    </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <!--Pagination-->
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center mt-5">
+            {% if page_obj.has_previous %}
+            <li {% if page_obj_number == 1 %}class="page-item active" 
+                {% endif %}><a class="page-link page" href="?page=1">1</a></li>
+            <li class="page-item">
+                <a class="page-link previous" 
+                href="?page={{page_obj.previous_page_number}}{% if query %}&q={{query}}{% endif %}">Anterior</a>
+            </li>
+            {% endif %}
+            {% if page_obj.has_next %}
+            <li class="page-item">
+                <a class="page-link next" href="?page={{page_obj.next_page_number}}{% if query %}&q={{query}}{% endif %}">
+                    Próxima</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link page" 
+                href="?page={{ page_obj.paginator.num_pages }}">
+                {{page_obj.paginator.num_pages}}</a>
+            </li>
+            {% endif %}
+        </ul>
+    </nav>
+    <!--Fim da pagination-->
+</div>
+<!-- Fim do Card Produtos-->
+
+{% endblock %}
+        
+        
+        

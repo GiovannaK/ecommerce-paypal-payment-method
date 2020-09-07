@@ -1,0 +1,93 @@
+{% extends 'store/base.html'%}
+{% load static %}
+
+{% block title %}Perfil | {{request.user}}{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/profile.css'%}">  
+<div class="container-fluid container-profileInfo">
+    <div class="row">
+        <div class="col-lg-4 mr-auto mt-2">
+            <div class="card card-profileInfo">
+                <div class="card-body profileInfo">
+                    <h2>Bem-vindo(a), {{request.user}}</h2>
+                    <div class="text-center mt-3">
+                        <a href="{% url 'update_user_info'%}" 
+                        class="btn btn-updateShipping mt-4 mb-5">
+                            Alterar informações pessoais
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 mr-auto mt-2">
+            <div class="card card-profileInfo">
+                <div class="card-body profileInfo">
+                    <h2>Alterar somente a senha</h2>
+                    <div class="text-center mt-3">
+                        <a href="{% url 'reset_password'%}" 
+                        class="btn btn-updateShipping mt-4 mb-5">
+                            Alterar senha
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% if not request.user.profile %}
+        <div class="col-lg-4 mr-auto mt-2">
+            <div class="card card-profileInfo">
+                <div class="card-body profileInfo">
+                    <h2>Informações de entrega</h2>
+                    <div class="text-center mt-3">
+                        <a href="{% url 'shipping_info' %}" 
+                        class="btn btn-updateShipping mt-4 mb-5">
+                            Adicionar endereço
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <div class="col-lg-4 mr-auto mt-2">
+            <div class="card card-profileInfo">
+                <div class="card-body profileInfo">
+                    <h2>Mudou-se recentemente?</h2>
+                    <div class="text-center mt-3">
+                        <a href="{% url 'update_shipping_info'%}" 
+                        class="btn btn-updateShipping mt-4 mb-5">
+                            Alterar endereço
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+<!-- Informações de pedido -->
+
+<div class="container container-order mb-5">
+    {% if not user.order_set.all %}
+    <div class="card card-info">
+        <div class="card-body">
+            <h3 class="text-uppercase"> Seus pedidos aparecerão abaixo:</h3>
+        </div>
+    </div>
+    {% endif %}
+
+    {% for line in user.order_set.all %}  
+    <div class="card card-order mt-5">
+        <div class="card-body card-orderInfo">
+            <h3 class="text-uppercase">Data: {{line.date_ordered}}</h3>
+            <p></p>
+            <div class="text-center">
+                <a href="{% url 'order_detail' line.pk %}" class="btn btn-orderInfo mt-3">Detalhes do pedido</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>       
+
+{% endblock %}
+    
+    

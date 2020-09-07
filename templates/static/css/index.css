@@ -1,0 +1,61 @@
+:root{
+    --orangered-color: orangered;
+    --orange-rgba-color: rgba(235, 71, 12, 0.705);
+    --green-rgba-color:  rgb(127, 216, 127);
+}
+
+
+body{
+    background-color: rgb(226, 226, 226);
+}
+
+
+/* Card Produtos */
+
+
+.product-category-title{
+    font-size: 40px;
+    font-family: Verdana, Tahoma, sans-serif;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.card{
+    text-align: center;
+    border: none;
+    -webkit-box-shadow: 0px 9px 6px 3px rgba(255, 102, 0, 0.836);
+    -moz-box-shadow: 0px 9px 6px 3px rgba(255, 94, 0, 0.5);
+    box-shadow: 0px 9px 6px 3px rgba(255, 94, 0, 0.5);
+}
+
+.card-heading{
+    font-size: 20px;
+    font-weight: 600;
+    color: rgb(226, 60, 0);
+}
+
+.product-link:hover{
+    text-decoration: none;
+    color: black;
+}
+
+.card-price{
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--orangered-color);
+}
+
+.btn-details{
+    background: var(--orange-rgba-color);
+    color: white;
+    transition: .5s;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.btn-details:hover{
+    background: var(--green-rgba-color);
+    transform: scale(1.02);
+}
+
+

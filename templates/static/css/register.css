@@ -1,0 +1,112 @@
+:root{
+    --orange-rgba-color:  rgba(235, 71, 12, 0.705);
+    --green-rgba-color: rgb(127, 216, 127);
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family: Verdana, Tahoma, sans-serif;
+    min-height: 100vh;
+    background: rgb(68,55,106);
+    background: -moz-linear-gradient(120deg, rgb(235, 113, 0)0%, rgb(93, 2, 136) 50%, rgb(0, 183, 196) 100%);
+    background: -webkit-linear-gradient(120deg, rgb(235, 113, 0)0%, rgb(93, 2, 136) 50%, rgb(0, 183, 196) 100%);
+    background: linear-gradient(120deg, rgb(235, 113, 0)0%, rgb(93, 2, 136) 50%, rgb(0, 183, 196) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#44376a",endColorstr="#1eebff",GradientType=1);
+    animation: bganimation 15s infinite;
+    background-size: 400%;
+}
+
+@keyframes bganimation{
+    0%{
+        background-position: 0% 50%;
+    }    
+    50%{
+        background-position: 100% 50%;
+    }
+    100%{
+        background-position: 0% 50%;
+    }
+}
+
+.register-container{
+    margin-top: 120px;
+    width: 50%;
+    margin-bottom: 200px;
+}
+
+.register-card{
+    -webkit-box-shadow: 7px 4px 7px 1px rgba(0,0,0,0.53);
+    -moz-box-shadow: 7px 4px 7px 1px rgba(0,0,0,0.53);
+    box-shadow: 7px 4px 7px 1px rgba(0,0,0,0.53);
+    padding-right: 30px;
+    padding-left: 30px;
+}
+
+.register-form{
+    font-size: 18px;
+    font-family: Verdana, Tahoma, sans-serif;
+    text-transform: uppercase;
+}
+
+.register-title{
+    font-size: 30px;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: Verdana, Tahoma, sans-serif;
+}
+
+.text-passReset{
+    font-size: 18px;
+    text-transform: uppercase;
+}
+
+.form-control{
+    border-color: rgb(151, 151, 151);
+    box-shadow: 1px 1px 1px 1px rgb(122, 122, 122);
+}
+
+.form-control:focus{
+    border-color: var(--orange-rgba-color);
+    box-shadow: 1px 1px 1px 1px var(--orange-rgba-color);
+}
+
+.error_message{
+    color: red; 
+}
+
+.have-account{
+    color: var(--orange-rgba-color);
+    font-family: Verdana, Tahoma, sans-serif;
+    font-size: 18px;
+    text-transform: uppercase;
+}
+
+.have-account:hover{
+    color: var(--green-rgba-color);  
+    text-decoration: none;  
+}
+
+.btn-register{
+    background-color: var(--orange-rgba-color);
+    color: white;
+    font-family: Verdana, Tahoma, sans-serif;
+    text-transform: uppercase;
+    transition: .5s;
+}
+
+
+.btn-register:hover{
+    background-color: var(--green-rgba-color);
+    font-family: Verdana, Tahoma, sans-serif;
+    text-transform: uppercase;
+    transform: scale(1.02);
+}
+
+
+@media only screen and (max-width : 1024px){
+    .register-container{
+        width: 100%
+    }    
+    
+};

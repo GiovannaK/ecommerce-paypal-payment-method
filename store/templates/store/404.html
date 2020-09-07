@@ -1,0 +1,14 @@
+
+{% load static %}
+
+{% block title %}Página não encontrada!{% endblock %}
+
+{% block content %}
+    <link rel="stylesheet" href="{% static 'css/404.css' %}">
+    <div class="container">
+        <h2>Oops! Página não encontrada.</h2>
+        <h1>404</h1>
+        <p>Não conseguimos encontrar a página que você está procurando.</p>
+        <a href="{% url 'store' %}">Voltar a home</a>
+    </div>    
+{% endblock %}

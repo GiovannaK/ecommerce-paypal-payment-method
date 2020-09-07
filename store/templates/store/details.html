@@ -1,0 +1,90 @@
+{% extends 'store/base.html'%}
+{% load static %}
+{% load formatted_price %}
+
+{% block title %}{{product.name}}{% endblock %}
+
+{% block content %}
+<!-- card produto detalhes -->
+<link rel="stylesheet" href="{% static 'css/details.css'%}">
+<div class="container container-card">
+    {% if not request.user.is_authenticated %}
+    <div class="card cartItems mb-5">
+        <div class="card-body">
+            <h2 class="text-accountRequired text-center mt-3">
+                Você precisa estar logado para adicionar itens no carrinho</h2>
+            <div class="text-center mt-3 mb-3">
+                <a href="{% url 'login_form' %}" class="btn btn-account">Login</a>
+                <a href="{% url 'register' %}" class="btn btn-account">Criar uma conta</a>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    <div class="card card-cartItems">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="card cart-img">
+                    <div class="card-body">
+                        {% if product.image %}  
+                            <div class="zoom">
+                                <img src="{{product.image.url}}" id="featured" class="img-fluid" alt="">
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>    
+            </div>
+            <div class="col-lg-8">
+                <div class="card card-itemInfo text-center">
+                    <div class="card-header card-itemTitle">
+                      {{product.name}}
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title card-itemPrice" id="variation-price">
+                            {{product.price | formatting_price}}</h5>
+                        <form action="{% url 'addtocart'%}" id="form-addToCart">    
+                            <div class="class variation text-center mt-4">
+                                <label for="variation" class="variation-text">
+                                    Selecione a variação do produto</label>
+                                <select id="select-variations" name="vid" 
+                                class="form-control select-variation mx-auto">
+                                  {% for variation in product.variation_set.all %}
+                                 <option data-price="{{variation.price | formatting_price}}" 
+                                    value="{{variation.id}}">
+                                    {% if variation.name %}
+                                    {{variation.name | slice:":15"}}...
+                                    {% else %}  
+                                    {{variation  | slice:":15"}}...
+                                    {% endif %}  
+                                    {% endfor %}
+                                </option>  
+                                </select>  
+                            </div>
+                            <div class="addcart text-center">
+                                {% if request.user.is_authenticated %}
+                                <button type="submit" class="btn btn-addCart mt-3">
+                                    Adicionar ao carrinho 
+                                </button>
+                                {% endif %}   
+                            </div>
+                        </form>
+                        <p class="card-text card-titleDescription mt-4">Descrição</p>
+                        <p class="card-text card-ItemDescription mt-4">
+                            {{product.description|slice:":200"}}...</p>
+                    </div>
+                </div>    
+            </div>
+        </div>
+    </div>
+    <!-- Fim do Card produto detalhes -->
+    <!-- Card mais informações-->
+    <div class="card mt-5 mb-5">
+        <div class="card-body">
+            <h3 class="text-center card-detailsInfo">Mais Informações</h3>
+            <hr>
+            <p class="text-center mt-5 card-detailsInfoText">{{product.description |linebreaks}}</p>
+        </div>
+    </div>
+    <!-- Fim do Card mais informações-->
+</div>
+{% endblock %}
+    

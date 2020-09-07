@@ -1,0 +1,125 @@
+{% extends 'store/base.html'%}
+{% load static %}
+{% load formatted_price %}
+{% load cart_quantity %}
+{% load cart_total %}
+
+{% block title %}Finalizar pedido |{% endblock %}
+
+{% block content %}
+<!--Carrinho card de informações-->
+<link rel="stylesheet" href="{% static 'css/cart.css'%}">
+
+<div class="container container-cartInfo">
+    <div class="card">
+        <div class="card-body">
+            <div class="text-center">
+                <h1 class="text-uppercase">Confirme seus dados:</h1>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid container-cartInfo">
+    <div class="row">
+        <div class="col-lg-4 ml-auto mt-2">
+            <div class="card card-cartInfo">
+                <div class="card-body">
+                  <h2 class="card-text text-center">Dados pessoais:</h2>
+                  <hr>
+                  <div class="card-text mt-3">Nome: {{user.first_name}}</div>
+                  <div class="card-text mt-3">Sobrenome: {{user.last_name}}</div>
+                  <div class="card-text mt-3">Usuário: {{user.username}}</div>
+                  <div class="card-text mt-3">CPF: {{user.profile.cpf}}</div>
+                  <div class="card-text mt-3">Data de nascimento: {{user.profile.birth_date}}</div>
+                  <div class="card-text mt-3">E-mail: {{user.email}}</div>  
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 mr-auto mt-2">
+            <div class="card card-cartInfo">
+                <div class="card-body">
+                  <h2 class="card-text text-center">Dados de endereço</h2>
+                  <hr>
+                  <div class="card-text mt-2">Endereço: {{user.profile.address}}</div>
+                  <div class="card-text mt-2">Complemento: {{user.profile.complement}}</div>
+                  <div class="card-text mt-2">Número: {{user.profile.number}}</div>
+                  <div class="card-text mt-2">Bairro: {{user.profile.neighborhood}}</div>
+                  <div class="card-text mt-2">Cidade: {{user.profile.city}}</div>
+                  <div class="card-text mt-2">Estado: {{user.profile.state}}</div>
+                  <div class="card-text mt-2">CEP: {{user.profile.cep}}</div>   
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 
+<!-- Fim do Carrinho card de informações-->
+
+<!-- tabela carrinho de compras -->
+
+{% if request.session.cart %}
+<div class="container mt-5">
+    {% for line in request.session.cart.values %}
+      <div class="card card-cartItems mb-3">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card cart-img">
+                    <div class="card-body">
+                      <a href="{% url 'details' line.slug %}">
+                        <img src="{% get_media_prefix %}{{line.image}}" class="img-fluid" alt="">
+                      </a>
+                    </div>
+                </div>    
+            </div>
+            <div class="col-md-8">
+                <div class="card card-itemInfo text-center">
+                    <div class="card-header card-itemTitle">
+                      <a class="link-itemTitle" href="{% url 'details' line.slug %}">{{line.product_name}}</a>
+                    </div>
+                    <div class="card-body">
+                      <h5 class="card-title card-itemPrice">
+                        Preço unitário: {{line.unity_price | formatting_price}}</h5>
+                      <p class="card-title card-itemPrice">
+                        Variação: {{line.variation_name}}</p>
+                      <p class="card-text card-ItemQt mt-3">
+                        Quantidade: {{line.quantity}}</p>
+                      <p class="card-text card-ItemTotal mt-4">
+                        Preço quantitativo: {{line.quantitative_price | formatting_price}}</p>
+                      <a href="{% url 'removefromcart' %}?vid={{ line.variation_id }}" class="btn btn-danger mt-3">Excluir</a>
+                    </div>
+                </div>    
+            </div>
+        </div>
+      </div>
+    {% endfor %}
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="text-center">
+                        <h2 class="card-text">Quantidade de itens</h2>
+                        <div class="text-total text-center mt-4">{{request.session.cart|cart_total_qt}}</div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="text-center">
+                        <h2 class="card-text">Valor total</h2>
+                        <div class="text-total text-center">{{request.session.cart|cart_totals|formatting_price}}</div>
+                    </div>
+                </div>
+            </div>
+            {% if not request.user.profile %}
+            <div class="text-center mt-5">
+                <p class="card-text mb-3"> Você precisa adicionar informações de entrega antes de prosseguir!</p>
+                <a class="btn btn-finishBuy btn-lg btn-block" href="{% url 'shipping_info' %}">Adicionar informações de entrega</a>
+            </div>
+            {% else %}
+            <div class="text-center mt-5">
+                <a class="btn btn-finishBuy btn-lg btn-block" href="{% url 'save_order' %}"> Fazer Pedido e Pagar</a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

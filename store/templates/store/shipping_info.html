@@ -1,0 +1,88 @@
+{% extends 'store/base.html'%}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block title %}Informações de entrega | {{request.user}} {% endblock %}
+
+{% block content %}
+    
+<link rel="stylesheet" href="{% static 'css/register.css'%}">
+<!-- form de registro -->   
+<div class="container-fluid register-container">
+    <div class="card card-container">
+        <div class="card-body register-card">
+            {% if not request.user.profile %}
+            <h1 class="register-title mb-5">Adicione suas informações de entrega</h1>
+            {% else %}
+            <h1 class="register-title mb-5">Atualizar informações de entrega</h1>
+            {% endif %}
+            <hr>
+            <form method="POST" action="" class="register-form"> 
+                {% csrf_token %}
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="City">Cidade</label>
+                        {% render_field profileform.city class="form-control" type="city"%}
+                        <small class="form-text error_message">{{profileform.errors.city}}</small>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="State">Estado</label>
+                        {% render_field profileform.state class="form-control" type="state"%}      
+                        <small class="form-text error_message">{{profileform.errors.}}</small>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="Date">Data de nascimento</label>
+                        {% render_field profileform.birth_date class="form-control" type="Date"%}
+                        <small class="form-text error_message">{{profileform.errors.birth_date}}</small>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="Address">Endereço</label>
+                        {% render_field profileform.address class="form-control" type="Address"%}
+                        <small class="form-text error_message">{{profileform.errors.address}}</small>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="Address">Número</label>
+                        {% render_field profileform.number class="form-control" type="Address"%}
+                        <small class="form-text error_message">{{profileform.errors.number}}</small>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="Address">Bairro</label>
+                        {% render_field profileform.neighborhood class="form-control" type="Address"%}
+                        <small class="form-text error_message">{{profileform.errors.neighborhood}}</small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="address">Complemento</label>
+                    {% render_field profileform.complement class="form-control" type="address"%}
+                    <small class="form-text error_message">{{profileform.errors.complement}}</small>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="Zip">CEP</label>
+                        {% render_field profileform.cep class="form-control" type="Zip"%}
+                        <small class="form-text error_message">{{profileform.errors.cep}}</small>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="CPF">CPF</label>
+                        {% render_field profileform.cpf class="form-control" type="number"%}
+                        <small class="form-text error_message">{{profileform.errors.neighborhood}}</small>
+                    </div>
+                </div>
+                {% if not request.user.profile %}
+                <a href="{% url 'login_form' %}" class="have-account">Já possui conta? Faça login</a>
+                {% endif %}
+                <div class="text-center mt-4"> 
+                    <button type="submit" class="btn btn-lg btn-block btn-register">Enviar</button>  
+                </div>
+            </form> 
+        </div>
+    </div>
+</div>
+
+<!-- Fim do form de registro -->
+{% endblock %}        
+       
