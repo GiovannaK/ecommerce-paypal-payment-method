@@ -188,7 +188,7 @@ def categories(request, slug):
 def cart(request):
     categories = Category.objects.all()
     
-    context = {'categories':categories}
+    context = {'categories':categories,}
     return render(request, 'store/cart.html', context)
 
 
