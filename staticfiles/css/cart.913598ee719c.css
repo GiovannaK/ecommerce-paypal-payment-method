@@ -1,0 +1,197 @@
+:root{
+    --orange-rgba-color: rgba(235, 71, 12, 0.705);
+    --green-rgba-color:  rgb(127, 216, 127);
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family: Verdana, Tahoma, sans-serif;
+    min-height: 100vh;
+    background: rgb(68,55,106);
+    background: -moz-linear-gradient(120deg, rgb(235, 113, 0)0%, rgb(93, 2, 136) 50%, rgb(0, 183, 196) 100%);
+    background: -webkit-linear-gradient(120deg, rgb(235, 113, 0)0%, rgb(93, 2, 136) 50%, rgb(0, 183, 196) 100%);
+    background: linear-gradient(120deg, rgb(235, 113, 0)0%, rgb(93, 2, 136) 50%, rgb(0, 183, 196) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#44376a",endColorstr="#1eebff",GradientType=1);
+    animation: bganimation 15s infinite;
+    background-size: 400%;
+}
+
+@keyframes bganimation{
+    0%{
+        background-position: 0% 50%;
+    }    
+    50%{
+        background-position: 100% 50%;
+    }
+    100%{
+        background-position: 0% 50%;
+    }
+}
+
+/* carrinho vazio */
+
+.empty-cart{
+    color: white;
+    text-transform: uppercase;
+    margin-top: 20%;
+}
+
+.btn-backHome{
+    margin-top: 50px;
+    color: white;
+    background-color: var(--orange-rgba-color);  
+    text-transform: uppercase;
+    font-size: 18px;  
+    transition: .5s;
+    margin-bottom: 30%;
+}
+
+.btn-backHome:hover{
+    color: black;
+    background-color:  var(--green-rgba-color);
+    transform: scale(1.1);
+}
+
+/*Carrinho card de informações*/
+
+.container-cartInfo{
+    margin-top: 100px;
+}
+
+.card-body{
+    -webkit-box-shadow: 5px 5px 6px 0px rgba(0,0,0,0.54);
+    -moz-box-shadow: 5px 5px 6px 0px rgba(0,0,0,0.54);
+    box-shadow: 5px 5px 6px 0px rgba(0,0,0,0.54); 
+}
+
+.btn-keepBuy{
+    background-color:rgb(163, 163, 163);
+    color: white;
+    font-family: Verdana, Tahoma, sans-serif;
+    letter-spacing: 1.5px;
+    transition: .5s;
+    box-shadow: 1px 1px 1px 1px rgb(66, 66, 66);
+}
+
+.btn-keepBuy:hover{
+    background-color: var(--orange-rgba-color);
+    transform: scale(1.1);
+}
+
+.card-text{
+    font-size: 20px;
+    font-family: Verdana, Tahoma, sans-serif;
+    text-transform: uppercase;
+}
+
+.text-total{
+    font-size: 40px;
+    font-family: Verdana, Tahoma, sans-serif;
+}
+
+.btn-finish{
+    background-color: var(--orange-rgba-color);
+    color: white;
+    font-family: Verdana, Tahoma, sans-serif;
+    letter-spacing: 1.5px;
+    transition: .5s;
+    box-shadow: 1px 1px 1px 1px rgb(145, 145, 145);
+}
+
+
+.btn-finish:hover{
+    background-color: var(--green-rgba-color);    
+    transform: scale(1.2);
+    
+}
+
+/* Fim do Carrinho card de informações*/
+
+/* tabela do Carrinho de compras*/
+
+.card-cartItems{
+    box-shadow: 1px 2px 2px 2px rgb(22, 22, 22);    
+}
+
+.cart-img{
+    width: 100%;
+    height: 100%;
+    transition: .5s;
+}
+
+.cart-img:hover{
+    transform: scale(1.05);
+}
+
+.card-itemInfo{
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.card-itemTitle, .link-itemTitle{
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: lighter;
+    color: white;
+    background-color: var(--orange-rgba-color);
+    text-decoration: none;
+    transition: .5s;
+}
+
+.link-itemTitle{
+    background-color: transparent;
+}
+
+.link-itemTitle:hover{
+    color: black;
+    text-decoration: none;
+}
+
+.form-quantity{
+    border: 1px solid black;
+    box-shadow: 1px 1px 1px 1px black;
+}
+
+.form-quantity:focus{
+    box-shadow: none;
+    border-color: var(--orange-rgba-color);
+    box-shadow: 1px 1px 1px 1px var(--orange-rgba-color);
+}
+
+.card-itemPrice, .card-ItemQt, .card-ItemTotal{
+    text-transform: uppercase;    
+    font-size: 20px;
+}
+
+.btn-danger{
+    transition: .5s;
+}
+
+.btn-danger:hover{
+    transform: scale(1.1);
+}
+
+.btn-finishBuy{
+    background-color: var(--orange-rgba-color);  
+    color: white;
+    text-transform: uppercase;
+    transition: .5s;
+}
+
+.btn-finishBuy:hover{
+    background-color: var(--green-rgba-color);
+}
+
+
+/* Fim da tabela do Carrinho de compras*/
+
+/* Media Queries */
+
+@media only screen and (max-width : 950px){
+    .cart-img:hover{
+        transform: scale(1.0);
+    }
+    
+};

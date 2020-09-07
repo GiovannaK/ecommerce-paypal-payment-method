@@ -1,0 +1,106 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: Verdana, Tahoma, sans-serif;
+    min-height: 100vh;
+    background: rgb(68,55,106);
+    background: -moz-linear-gradient(120deg, rgb(235, 113, 0)0%, rgb(93, 2, 136) 50%, rgb(0, 183, 196) 100%);
+    background: -webkit-linear-gradient(120deg, rgb(235, 113, 0)0%, rgb(93, 2, 136) 50%, rgb(0, 183, 196) 100%);
+    background: linear-gradient(120deg, rgb(235, 113, 0)0%, rgb(93, 2, 136) 50%, rgb(0, 183, 196) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#44376a",endColorstr="#1eebff",GradientType=1);
+    animation: bganimation 15s infinite;
+    background-size: 400%;
+}
+
+@keyframes bganimation{
+    0%{
+        background-position: 0% 50%;
+    }    
+    50%{
+        background-position: 100% 50%;
+    }
+    100%{
+        background-position: 0% 50%;
+    }
+}
+
+.container-form{
+    margin-top: 190px;
+    padding: 17px;
+    width: 40%;
+}
+
+.card-body{
+    font-size: 20px;
+    -webkit-box-shadow: 4px 4px 5px 2px rgba(0,0,0,0.51);
+    -moz-box-shadow: 4px 4px 5px 2px rgba(0,0,0,0.51);
+    box-shadow: 4px 4px 5px 2px rgba(0,0,0,0.51)
+}
+
+.form-title{
+    font-family: Verdana, Tahoma, sans-serif;
+    font-size: 35px;
+    text-transform: uppercase;
+}
+
+.login-form{
+    font-size: 18px;
+    font-family: Verdana, Tahoma, sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.form-email, .form-password{
+    width: 70%;
+    margin: auto;
+    border: none;
+    border-radius: 0;
+    border-bottom: 2px solid black;
+    transition: .5s;
+    margin-bottom: 50px;
+}
+
+.form-email:focus, .form-password:focus{
+    box-shadow: none;
+    border-color: orangered;
+    transform: scale(1.1);
+}
+
+.forgot-password{
+    margin-left: 15%;
+    text-transform: uppercase;
+    font-size: 16px;
+    color: orangered;
+    font-family: Verdana, Tahoma, sans-serif;
+    transition: .5s;
+}
+
+
+.forgot-password:hover{
+    color: rgb(127, 216, 127);    
+    text-decoration: none;
+}
+
+.btn-login{
+    background-color: rgba(235, 71, 12, 0.705);
+    margin-top: 30px;
+    min-width: 20%;
+    font-size: 18px;
+    font-family: Verdana, Tahoma, sans-serif;
+    text-transform: uppercase;
+    color: white;
+    transition: .5s;
+}
+
+.btn-login:hover{
+    color: white;
+    background-color: rgb(127, 216, 127);
+    transform: scale(1.02);
+}
+
+@media only screen and (max-width : 970px){
+    .container-form, .card-body{
+        width: 100%
+    }    
+    
+};

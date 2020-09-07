@@ -1,0 +1,142 @@
+/* Card detalhes */
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family: Verdana, Tahoma, sans-serif;
+    min-height: 100vh;
+    background: rgb(68,55,106);
+    background: -moz-linear-gradient(120deg, rgb(235, 113, 0)0%, rgb(93, 2, 136) 50%, rgb(0, 183, 196) 100%);
+    background: -webkit-linear-gradient(120deg, rgb(235, 113, 0)0%, rgb(93, 2, 136) 50%, rgb(0, 183, 196) 100%);
+    background: linear-gradient(120deg, rgb(235, 113, 0)0%, rgb(93, 2, 136) 50%, rgb(0, 183, 196) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#44376a",endColorstr="#1eebff",GradientType=1);
+    animation: bganimation 15s infinite;
+    background-size: 400%;
+    font-family: Verdana, Tahoma, sans-serif;
+}
+
+@keyframes bganimation{
+    0%{
+        background-position: 0% 50%;
+    }    
+    50%{
+        background-position: 100% 50%;
+    }
+    100%{
+        background-position: 0% 50%;
+    }
+}
+
+
+
+.container-card{
+    margin-top: 100px;
+}
+
+.card-cartItems, .card-itemInfo{
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.text-accountRequired{
+    font-size: 25px;
+    text-transform: uppercase;
+}
+
+.btn-account{
+    background-color: rgba(235, 71, 12, 0.705);
+    text-transform: uppercase;
+    color: white;
+    transition: .5s;
+}
+
+.btn-account:hover{
+    background-color: rgb(127, 216, 127);
+}
+
+.zoom{
+    overflow: hidden;
+    
+}
+
+.zoom img{
+    -moz-transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.zoom:hover img{
+    -moz-transform: scale(1.15);    
+    -webkit-transform: scale(1.15);    
+    transform: scale(1.15);
+}
+
+.cart-img{
+    width: 100%;
+    height: 100%;
+}
+
+
+.card-itemTitle{
+    font-size: 22px;
+    text-transform: uppercase;
+    background-color: rgba(235, 71, 12, 0.705);
+    color: white;
+}
+
+.btn-addCart{
+    background-color:  rgba(235, 71, 12, 0.705);
+    color: white;
+    transition: .5s;
+    text-transform: capitalize;
+}
+
+.btn-addCart:hover{
+    color: black;
+    background-color: rgb(127, 216, 127);
+    transform: scale(1.05);
+}
+
+.card-titleDescription{
+    font-size: 20px;
+    text-transform: uppercase;
+}
+
+.card-ItemDescription, .card-detailsInfoText{
+    font-family: sans-serif;
+}
+
+.variation-text, .quantity-text{
+   font-size: 20px; 
+   text-transform: uppercase;
+}
+
+.select-variation{
+    width: 50%;
+    border-color: rgba(46, 46, 46, 0.699);
+    box-shadow: 1px 1px 1px 1px rgb(102, 102, 102);
+}
+
+.select-quantity{
+    border-color: rgba(46, 46, 46, 0.699);
+    box-shadow: 1px 1px 1px 1px rgb(102, 102, 102);    
+}
+
+.select-variation:focus, .select-quantity:focus{
+    border-color: rgba(238, 95, 12, 0.774);
+    box-shadow: 1px 1px 1px 1px rgba(238, 95, 12, 0.774);
+}
+
+/* Fim card detalhes -> classe card-detailsInfo pertence a próxima sessão
+apenas compartilha as mesmas carcterísticas de estilo*/
+
+/* Card mais informações*/
+
+.card-detailsInfo{
+    font-size: 22px;
+    font-family: Verdana, Tahoma, sans-serif;
+    text-transform: uppercase;
+}
+
+
