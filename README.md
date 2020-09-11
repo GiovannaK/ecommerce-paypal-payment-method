@@ -61,6 +61,15 @@ This is an electronic commerce of electronic products, including product variati
 ### User Profile
 - when a user completes the registration, they are redirected to the profile where they can add address information, change password, view order status or change personal information.
 
+### User Login
+- To login, use your username and password. If the user does not remember the password, he can use "I forgot the password" to reset it.
+
+### Forgot password
+- If the user forgets the password, they can enter their e-mail address to receive instructions on how to change the password.
+
+### CPF
+- The CPF is validated, that is, if you want to perform a test you need to use a CPF generator to complete the registration
+
 ### Product Details
 - When selecting a product variation the price will change dynamically if there is a price variation
 
