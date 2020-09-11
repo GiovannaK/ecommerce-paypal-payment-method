@@ -67,7 +67,7 @@ This is an electronic commerce of electronic products, including product variati
 ### Forgot password
 - If the user forgets the password, they can enter their e-mail address to receive instructions on how to change the password.
 
-### CPF
+### CPF(SSN in USA)
 - The CPF is validated, that is, if you want to perform a test you need to use a CPF generator to complete the registration
 
 ### Product Details
