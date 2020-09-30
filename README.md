@@ -59,7 +59,7 @@ This is an electronic commerce of electronic products, including product variati
 - Create, delete, view or update users, products, orders or order items. You can define which of these features a group of users can access
 
 ### User Profile
-- when a user completes the registration, they are redirected to the profile where they can add address information, change password, view order status or change personal information.
+- When a user completes the registration, they are redirected to the profile where they can add address information, change password, view order status or change personal information.
 
 ### User Login
 - To login, use your username and password. If the user does not remember the password, he can use "I forgot the password" to reset it.
