@@ -226,6 +226,6 @@ SOFTWARE.
 
 ## Author Info
 
-- Linkedin - [Giovanna Cunha](https://www.linkedin.com/in/giovanna-cunha-4989b81b2/)
+- Linkedin - [Giovanna Cunha](https://www.linkedin.com/in/giovanna-kelli/)
 
 
